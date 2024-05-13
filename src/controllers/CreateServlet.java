@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Task;
-import models.validators.TaskValidator;
 import utils.DBUtil;
+import validators.TaskValidator;
 
 /**
  * Servlet implementation class CreateServlet
