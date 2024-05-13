@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${errors != null}">
+    <div id="flush_error">
+        入力内容にエラーがあります。<br />
+                <c:forEach var="error" items="${errors}">
+            ・<c:out value="${error}" /><br />
+        </c:forEach>
+
+    </div>
+</c:if>
+<label for="title">WebApp</label><br />
+<c:import url="../layout/app.jsp">
+    <c:param name="content">
+        <c:if test="${flush != null}">
+            <div id="flush_success">
+                <c:out value="${flush}"></c:out>
+            </div>
+        </c:if>
+        <h2>メッセージ一覧</h2>
+        <ul>
+            <c:forEach var="task" items="${tasks}">
+                <li><a
+                    href="${pageContext.request.contextPath}/show?id=${task.id}">
+                        <c:out value="${task.id}" />
+                </a> ：<c:out value="${task.content}"></c:out></li>
+            </c:forEach>
+        </ul>
+
+        <p>
+            <a href="${pageContext.request.contextPath}/new">新規タスク追加</a>
+        </p>
+
+    </c:param>
+</c:import>
